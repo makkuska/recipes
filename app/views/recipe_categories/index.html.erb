@@ -1,0 +1,27 @@
+<h1>Kategorie receptů</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @recipe_categories.each do |recipe_category| %>
+      <tr>
+        <td><%= recipe_category.name %></td>
+        <td><%= link_to 'Show', recipe_category %></td>
+        <td><%= link_to 'Edit', edit_recipe_category_path(recipe_category) %></td>
+        <td><%= link_to 'Destroy', recipe_category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Recipe category', new_recipe_category_path %>
