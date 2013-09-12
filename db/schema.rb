@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130912143612) do
+ActiveRecord::Schema.define(version: 20130912231556) do
 
   create_table "ingredient_categories", force: true do |t|
     t.string "name"
@@ -31,6 +31,20 @@ ActiveRecord::Schema.define(version: 20130912143612) do
   create_table "recipe_categories", force: true do |t|
     t.string "name"
   end
+
+  create_table "recipes", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.text     "procedure"
+    t.integer  "author_id"
+    t.integer  "portion_count"
+    t.integer  "recipe_category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "recipes", ["author_id"], name: "index_recipes_on_author_id"
+  add_index "recipes", ["recipe_category_id"], name: "index_recipes_on_recipe_category_id"
 
   create_table "units", force: true do |t|
     t.string "name"

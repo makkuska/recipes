@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  description: MyText
+  procedure: MyText
+  author_id: 
+  portion_count: 1
+  recipe_category_id: 
+
+two:
+  name: MyString
+  description: MyText
+  procedure: MyText
+  author_id: 
+  portion_count: 1
+  recipe_category_id: 
