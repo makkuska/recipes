@@ -1,0 +1,14 @@
+<%= form_for(@recipe_ingredient) do |f| %>
+  <div class="field">
+    <%= f.label :ingredient %><br>
+    <%= f.select :ingredient, Ingredient.all_names %>
+  </div>
+  <div class="field">
+    <%= f.label :amount %><br>
+    <%= f.number_field :amount %>
+  </div>
+  <div class="field">
+    <%= f.label :unit %><br>
+    <%= f.select :unit, Unit.all_names %>
+  </div>
+<% end %>

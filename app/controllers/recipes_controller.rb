@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
-  before_action :set_recipe, only: [:show, :edit, :update, :destroy]
+  before_action :set_recipe, only: [:show,:edit,:update,:destroy,
+                                    :add_ingredient,:edit_ingredient]
 
   # GET /recipes
   # GET /recipes.json
@@ -21,7 +22,8 @@ class RecipesController < ApplicationController
   def edit
   end
 
-  # POST /recipes
+  #############################################################################
+
   # POST /recipes.json
   def create
     @recipe = Recipe.new
@@ -29,11 +31,14 @@ class RecipesController < ApplicationController
 
     respond_to do |format|
       if @recipe.save
-        format.html { redirect_to @recipe, notice: 'Recipe was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @recipe }
+        format.html { redirect_to @recipe,
+                      notice: 'Recipe was successfully created.' }
+        format.json { render action: 'show',
+                      status: :created, location: @recipe }
       else
         format.html { render action: 'new' }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
+        format.json { render json: @recipe.errors,
+                      status: :unprocessable_entity }
       end
     end
   end
@@ -42,14 +47,16 @@ class RecipesController < ApplicationController
   # PATCH/PUT /recipes/1.json
   def update
     set_recipe_attrs
-    
+
     respond_to do |format|
       if @recipe.save
-        format.html { redirect_to @recipe, notice: 'Recipe was successfully updated.' }
+        format.html { redirect_to @recipe,
+                      notice: 'Recipe was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @recipe.errors, status: :unprocessable_entity }
+        format.json { render json: @recipe.errors,
+                      status: :unprocessable_entity }
       end
     end
   end
@@ -58,10 +65,23 @@ class RecipesController < ApplicationController
   # DELETE /recipes/1.json
   def destroy
     @recipe.destroy
+
     respond_to do |format|
       format.html { redirect_to recipes_url }
       format.json { head :no_content }
     end
+  end
+
+  #############################################################################
+
+  # GET /recipes/1/add_ingredient
+  def add_ingredient
+    @recipe_ingredient = RecipeIngredient.new
+  end
+
+  # GET /recipes/1/edit_ingredient
+  def edit_ingredient
+#    @recipe_ingredient = RecipeIngredient.find_by(recipe: @recipe,ingredient: )
   end
 
   private
@@ -75,7 +95,7 @@ class RecipesController < ApplicationController
       @recipe.author = Person.find_by(name: params[:recipe][:author])
       @recipe.category = RecipeCategory.find_by(name: params[:recipe][:category])
     end
-    
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def recipe_params
       params.require(:recipe).permit(:name, :description, :procedure, :portion_count)

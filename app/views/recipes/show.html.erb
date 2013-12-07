@@ -11,6 +11,33 @@
 </p>
 
 <p>
+  <strong>Portion count:</strong>
+  <%= @recipe.portion_count %>
+</p>
+
+<p>
+<% unless @recipe.recipe_ingredients.empty? %>
+  <table>
+    <tr>
+      <th>Surovina</th>
+      <th>Množství</th>
+      <th>Jednotky</th>
+    </tr>
+    <% @recipe.recipe_ingredients.each do |rcp_ingredient| %>
+    <tr>
+      <td><%= rcp_ingredient.ingredient.name %></td>
+      <td><%= rcp_ingredient.amount %></td>
+      <td><%= rcp_ingredient.unit.name %></td>
+      <td><%= button_to 'Upravit', rcp_ingredient, method: :delete %></td>
+      <td><%= button_to 'Odstranit', rcp_ingredient, method: :delete %></td>
+    </tr>
+    <% end %>
+  </table>
+<% end %>
+<%= button_to 'Přidat surovinu', add_ingredient_recipe_path, method: :get %>
+</p>
+
+<p>
   <strong>Procedure:</strong>
   <%= @recipe.procedure %>
 </p>
@@ -18,11 +45,6 @@
 <p>
   <strong>Author:</strong>
   <%= @recipe.author.name %>
-</p>
-
-<p>
-  <strong>Portion count:</strong>
-  <%= @recipe.portion_count %>
 </p>
 
 <p>

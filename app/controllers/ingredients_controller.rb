@@ -21,19 +21,25 @@ class IngredientsController < ApplicationController
   def edit
   end
 
+  #############################################################################
+
   # POST /ingredients
   # POST /ingredients.json
   def create
     @ingredient = Ingredient.new(ingredient_params)
-    @ingredient.category = IngredientCategory.find_by(name: params[:ingredient][:category])
+    @ingredient.category =
+      IngredientCategory.find_by(name: params[:ingredient][:category])
 
     respond_to do |format|
       if @ingredient.save
-        format.html { redirect_to @ingredient, notice: 'Ingredient was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @ingredient }
+        format.html { redirect_to @ingredient,
+                      notice: 'Ingredient was successfully created.' }
+        format.json { render action: 'show', status: :created,
+                      location: @ingredient }
       else
         format.html { render action: 'new' }
-        format.json { render json: @ingredient.errors, status: :unprocessable_entity }
+        format.json { render json: @ingredient.errors,
+                      status: :unprocessable_entity }
       end
     end
   end
@@ -42,15 +48,18 @@ class IngredientsController < ApplicationController
   # PATCH/PUT /ingredients/1.json
   def update
     @ingredient.attributes = ingredient_params
-    @ingredient.category = IngredientCategory.find_by(name: params[:ingredient][:category])
+    @ingredient.category =
+      IngredientCategory.find_by(name: params[:ingredient][:category])
 
     respond_to do |format|
       if @ingredient.save
-        format.html { redirect_to @ingredient, notice: 'Ingredient was successfully updated.' }
+        format.html { redirect_to @ingredient,
+                      notice: 'Ingredient was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @ingredient.errors, status: :unprocessable_entity }
+        format.json { render json: @ingredient.errors,
+                      status: :unprocessable_entity }
       end
     end
   end
@@ -65,13 +74,16 @@ class IngredientsController < ApplicationController
     end
   end
 
+  #############################################################################
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_ingredient
       @ingredient = Ingredient.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    # Never trust parameters from the scary internet, only allow the white
+    # list through.
     def ingredient_params
       params.require(:ingredient).permit(:name)
     end

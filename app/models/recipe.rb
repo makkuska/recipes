@@ -5,5 +5,8 @@ class Recipe < ActiveRecord::Base
   belongs_to :author, class_name: 'Person'
   belongs_to :recipe_category
 
+  has_many :ingredients, through: :recipe_ingredients
+  has_many :recipe_ingredients
+
   alias_attribute :category,:recipe_category
 end

@@ -21,6 +21,8 @@ class IngredientCategoriesController < ApplicationController
   def edit
   end
 
+  #############################################################################
+
   # POST /ingredient_categories
   # POST /ingredient_categories.json
   def create
@@ -28,11 +30,14 @@ class IngredientCategoriesController < ApplicationController
 
     respond_to do |format|
       if @ingredient_category.save
-        format.html { redirect_to @ingredient_category, notice: 'Ingredient category was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @ingredient_category }
+        format.html { redirect_to @ingredient_category,
+                      notice: 'Ingredient category was successfully created.' }
+        format.json { render action: 'show', status: :created,
+                      location: @ingredient_category }
       else
         format.html { render action: 'new' }
-        format.json { render json: @ingredient_category.errors, status: :unprocessable_entity }
+        format.json { render json: @ingredient_category.errors,
+                      status: :unprocessable_entity }
       end
     end
   end
@@ -42,11 +47,13 @@ class IngredientCategoriesController < ApplicationController
   def update
     respond_to do |format|
       if @ingredient_category.update(ingredient_category_params)
-        format.html { redirect_to @ingredient_category, notice: 'Ingredient category was successfully updated.' }
+        format.html { redirect_to @ingredient_category,
+                      notice: 'Ingredient category was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: 'edit' }
-        format.json { render json: @ingredient_category.errors, status: :unprocessable_entity }
+        format.json { render json: @ingredient_category.errors,
+                      status: :unprocessable_entity }
       end
     end
   end
@@ -61,13 +68,16 @@ class IngredientCategoriesController < ApplicationController
     end
   end
 
+  #############################################################################
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_ingredient_category
       @ingredient_category = IngredientCategory.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    # Never trust parameters from the scary internet, only allow the white
+    # list through.
     def ingredient_category_params
       params.require(:ingredient_category).permit(:name)
     end
