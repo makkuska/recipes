@@ -43,7 +43,7 @@ class RecipesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /recipes/1
+  # PATCH/PUT /recipes/0
   # PATCH/PUT /recipes/1.json
   def update
     set_recipe_attrs

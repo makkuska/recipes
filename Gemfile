@@ -43,3 +43,18 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+#
+group :development do
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'guard-rspec'
+  gem 'guard-rails'
+  gem 'spring'
+  gem 'spring-commands-rspec'
+  gem 'simplecov'
+  gem 'quiet_assets'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'capybara'
+  gem 'annotate'
+end
