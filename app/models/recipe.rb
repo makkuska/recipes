@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: recipes
+#
+#  id                 :integer          not null, primary key
+#  name               :string(255)
+#  description        :text
+#  procedure          :text
+#  author_id          :integer
+#  portion_count      :integer
+#  recipe_category_id :integer
+#  created_at         :datetime
+#  updated_at         :datetime
+#
+
 class Recipe < ActiveRecord::Base
   validates :name,:description,:procedure,:author,:portion_count,:recipe_category, presence: true
   validates :portion_count, numericality: true

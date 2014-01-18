@@ -1,3 +1,12 @@
+# == Schema Information
+#
+# Table name: ingredients
+#
+#  id                     :integer          not null, primary key
+#  name                   :string(255)
+#  ingredient_category_id :integer
+#
+
 class Ingredient < ActiveRecord::Base
   belongs_to :ingredient_category
 
