@@ -47,12 +47,13 @@ ActiveRecord::Schema.define(version: 20130913100254) do
     t.string   "name"
     t.text     "description"
     t.text     "procedure"
-    t.integer  "author_id"
     t.integer  "portion_count"
-    t.integer  "recipe_category_id"
+    t.integer  "author_id"
+    t.integer  "recipe_category_id" #N:M
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+# a chci tam komenty k receptům od lidí, jak na fb, Kubo! Děkuji. 
 
   add_index "recipes", ["author_id"], name: "index_recipes_on_author_id"
   add_index "recipes", ["recipe_category_id"], name: "index_recipes_on_recipe_category_id"
