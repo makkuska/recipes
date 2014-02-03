@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Recipes::Application.config.secret_key_base = 'a00867800711c705258e9c0cdecc7b9a4f07b24721ac04e6db02d5a57a7240edfa5f4a1753b00a8a738812c6de6947f627b1285b8a2efdaa403f966f2a65e5ae'
+Recipes::Application.config.secret_key_base = '8ca7787b86e677acf2f78c06178e0bcd7a25ff089ef5706412a3a98a151018a8cad76aa52c84e5c95075ae52e3d21daba1358482a40e27da3cd9ac6761b71795'

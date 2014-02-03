@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0'
+gem 'rails', '4.0.2'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
@@ -16,7 +16,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-gem 'therubyracer', platforms: :ruby
+# gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -33,7 +33,7 @@ group :doc do
 end
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+# gem 'bcrypt-ruby', '~> 3.1.2'
 
 # Use unicorn as the app server
 # gem 'unicorn'
@@ -43,18 +43,3 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-#
-group :development do
-  gem 'rspec'
-  gem 'rspec-rails'
-  gem 'guard-rspec'
-  gem 'guard-rails'
-  gem 'spring'
-  gem 'spring-commands-rspec'
-  gem 'simplecov'
-  gem 'quiet_assets'
-  gem 'better_errors'
-  gem 'binding_of_caller'
-  gem 'capybara'
-  gem 'annotate'
-end
