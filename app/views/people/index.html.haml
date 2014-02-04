@@ -1,0 +1,4 @@
+%ul#people-list
+  - Person.all.each do |person|
+    = content_tag_for(:li, person) do
+      = person.name
