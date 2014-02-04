@@ -41,6 +41,7 @@ gem 'jquery-rails'
 
 gem 'spring', '~> 0.0.11'
 gem 'haml'
+gem 'bootstrap-sass', '~> 3.1.0'
 
 group :development do
   gem 'annotate'
