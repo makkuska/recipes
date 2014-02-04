@@ -1,0 +1,7 @@
+table#people-list td#actions {
+  text-align: center
+}
+
+table#people-list td {
+  width: 150px
+}

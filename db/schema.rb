@@ -13,7 +13,7 @@ ActiveRecord::Schema.define(version: 20130913100254) do
   add_index "ingredients", ["ingredient_category_id"], name: "index_ingredients_on_ingredient_category_id"
 
   create_table "people", force: true do |t|
-    t.string "name"
+    t.string "name", null: false
   end
 
   create_table "recipe_ingredients", force: true do |t|

@@ -2,11 +2,43 @@ require 'spec_helper'
 
 describe 'people page' do
   let!(:person) { Person.create!(name: 'Markétka') }
-  it 'shows a list' do
-    visit people_path
-    within 'ul#people-list' do
+  before { visit people_path }
+
+  def within_person_item(person,&block)
+    within("#people-list #person_#{person.id}",&block)
+  end
+
+  it 'shows a list of people' do
+    within_person_item(person) do
       expect(page).to have_content person.name
     end
-    p page.body
+  end
+
+  it 'allows us to delete person' do
+    within_person_item(person) do
+      click_link 'smazat'
+    end
+
+    expect(page).not_to have_content person.name
+  end
+
+  let(:name) { 'Kuba' }
+
+  it 'allows us to add person' do
+    click_link 'přidat'
+    fill_in 'Jméno', with: name
+    click_button 'uložit'
+
+    expect(page).to have_content name
+  end
+
+  it 'allows us to edit person' do
+    within_person_item(person) do
+      click_link 'upravit'
+    end
+    fill_in 'Jméno', with: name
+    click_button 'uložit'
+
+    expect(page).to have_content name
   end
 end

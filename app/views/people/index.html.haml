@@ -1,4 +1,11 @@
-%ul#people-list
-  - Person.all.each do |person|
-    = content_tag_for(:li, person) do
-      = person.name
+%table#people-list
+  %th Jméno
+  %th akce
+  - @people.each do |person|
+    = content_tag_for(:tr, person) do
+      %td#name= person.name
+      %td#actions
+        = link_to 'upravit', edit_person_path(person)
+        = link_to 'smazat', person, method: :delete, data: { confirm: 'Opravdu?' }
+
+%p= link_to 'přidat', new_person_path
