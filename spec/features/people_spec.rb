@@ -20,6 +20,7 @@ describe 'people page' do
     end
 
     expect(page).not_to have_content person.name
+    expect(Person.find_by(name: person.name)).not_to be
   end
 
   let(:name) { 'Kuba' }
@@ -30,6 +31,15 @@ describe 'people page' do
     click_button 'uložit'
 
     expect(page).to have_content name
+    expect(Person.find_by(name: name)).to be
+  end
+
+  it "doesn't allow us to add person with no name" do
+    click_link 'přidat'
+    click_button 'uložit'
+
+    expect(page).to have_content "Name can't be blank"
+    expect(Person.find_by(name: '')).not_to be
   end
 
   it 'allows us to edit person' do
@@ -40,5 +50,17 @@ describe 'people page' do
     click_button 'uložit'
 
     expect(page).to have_content name
+    expect(Person.find_by(name: name)).to be
+  end
+
+  it "doesn't allow us to change name to empty" do
+    within_person_item(person) do
+      click_link 'upravit'
+    end
+    fill_in 'Jméno', with: ''
+    click_button 'uložit'
+
+    expect(page).to have_content "Name can't be blank"
+    expect(Person.find_by(name: '')).not_to be
   end
 end

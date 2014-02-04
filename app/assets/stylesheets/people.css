@@ -5,3 +5,19 @@ table#people-list td#actions {
 table#people-list td {
   width: 150px
 }
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table
+}
+
+.notice {
+  display: table;
+  background-color: lightgreen
+}
+
+.alert {
+  display: table;
+  background-color: red
+}

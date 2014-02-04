@@ -8,8 +8,13 @@ class PeopleController < ApplicationController
   end
 
   def create
-    Person.create(person_params)
-    redirect_to action: :index
+    @person = Person.new(person_params)
+
+    if @person.save
+      redirect_to({ action: :index }, notice: 'autor vytvořen')
+    else
+      render :new
+    end
   end
 
   def edit
@@ -17,13 +22,20 @@ class PeopleController < ApplicationController
   end
 
   def update
-    person.update(person_params)
-    redirect_to action: :index
+    @person = person
+    @person.attributes = person_params
+
+    if @person.save
+      redirect_to({ action: :index }, notice: 'autor upraven')
+    else
+      render :edit
+    end
   end
 
   def destroy
     person.destroy
-    redirect_to action: :index
+
+    redirect_to({ action: :index }, notice: 'autor smazán')
   end
 
   private

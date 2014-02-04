@@ -1,4 +1,12 @@
+- if @person.errors.any?
+  #error_explanation
+    %h3= pluralize(@person.errors.count, "error") + " prohibited this person from being saved:"
+    %ul
+      - @person.errors.full_messages.each do |msg|
+        %li= msg
+
 = form_for @person do |f|
-  = f.label :name, 'Jméno'
-  = f.text_field :name
+  %div.name
+    = f.label :name, 'Jméno'
+    = f.text_field :name
   = f.submit 'uložit'
