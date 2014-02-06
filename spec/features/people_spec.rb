@@ -38,7 +38,8 @@ describe 'people page' do
     click_link 'přidat'
     click_button 'uložit'
 
-    expect(page).to have_content "Name can't be blank"
+    puts page.body
+    expect(page).to have_content "Jménoje povinná položka"
     expect(Person.find_by(name: '')).not_to be
   end
 
@@ -60,7 +61,7 @@ describe 'people page' do
     fill_in 'Jméno', with: ''
     click_button 'uložit'
 
-    expect(page).to have_content "Name can't be blank"
+    expect(page).to have_content  "Jménoje povinná položka"
     expect(Person.find_by(name: '')).not_to be
   end
 end

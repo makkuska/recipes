@@ -1,12 +1,7 @@
-- if @person.errors.any?
-  #error_explanation
-    %h3= pluralize(@person.errors.count, "error") + " prohibited this person from being saved:"
-    %ul
-      - @person.errors.full_messages.each do |msg|
-        %li= msg
+= simple_form_for(@person) do |f|
+  = f.error_notification message: "Došlo k #{@person.errors.count} chybám"
 
-= form_for @person do |f|
-  %div.name
-    = f.label :name, 'Jméno'
-    = f.text_field :name
-  = f.submit 'uložit'
+  .form-inputs
+    = f.input :name, label: 'Jméno'
+  .form-group
+    = f.button :submit, 'uložit', class: 'btn-primary'
