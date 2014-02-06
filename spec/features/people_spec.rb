@@ -38,7 +38,6 @@ describe 'people page' do
     click_link 'přidat'
     click_button 'uložit'
 
-    puts page.body
     expect(page).to have_content "Jménoje povinná položka"
     expect(Person.find_by(name: '')).not_to be
   end
